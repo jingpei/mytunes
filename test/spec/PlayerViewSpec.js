@@ -1,5 +1,7 @@
 describe('PlayerView', function() {
   var library, appView;
+  //jing inserted random shit
+  var appModel;
 
   beforeEach(function() {
 
@@ -22,7 +24,9 @@ describe('PlayerView', function() {
     ]);
     // playerView is created in AppView initialize
     // access with appView.playerView
-    appView = new AppView({model: new AppModel({library: library})});
+    // appView = new AppView({model: new AppModel({library: library})});
+    appModel = new AppModel({library: library});
+    appView = new AppView({model: appModel});
   });
 
   it('gets its model property set to any song that is played', function() {
@@ -32,7 +36,7 @@ describe('PlayerView', function() {
   });
 
   describe('Song transitions', function() {
-    xit('dequeues a song when finished playing & plays the next song', function() {
+    it('dequeues a song when finished playing & plays the next song', function() {
       var firstSong = library.at(0),
           secondSong = library.at(1),
           thirdSong = library.at(2),
@@ -44,9 +48,11 @@ describe('PlayerView', function() {
       // play the first song
       songQueue.playFirst();
       expect(appView.playerView.model).to.equal(firstSong);
+
       // Simulate the end of the first song
       $(appView.playerView.el).trigger('ended');
       expect(appView.playerView.model).to.equal(secondSong);
+
       // Simulate the end of the second song
       $(appView.playerView.el).trigger('ended');
       expect(appView.playerView.model).to.equal(thirdSong);
