@@ -2,7 +2,8 @@
 var SongModel = Backbone.Model.extend({
 
   defaults : {
-    count: 0
+    count: 0,
+    upvote: false
   },
 
   play: function() {
@@ -20,7 +21,16 @@ var SongModel = Backbone.Model.extend({
   },
   removeFromQueue: function(){
     this.trigger('removeFromQueue', this);
+  },
+  toggleUpvote: function(){
+    if(this.get('upvote') === false) {
+      this.set('upvote', true);
+    } else{ 
+      this.set('upvote', false);
+    }
+    this.trigger('toggleUpvote', this);
   }
+
 
 
 });
