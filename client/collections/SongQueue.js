@@ -30,6 +30,8 @@ var SongQueue = Songs.extend({
 
   playFirst: function(){
     this.at(0).play();
+    this.at(0).set('count', (this.at(0).get('count') + 1))
+    debugger;
   },
 
 
