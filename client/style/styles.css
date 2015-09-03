@@ -1,0 +1,23 @@
+@import url(https://fonts.googleapis.com/css?family=Amatic+SC);
+
+body {
+  font-family: 'Amatic SC', cursive;
+  font-size: 35px;
+}
+audio {
+  width: 500px;
+}
+
+th {
+  font-size: 50px;
+}
+
+#count {
+  padding-left: 50px;
+  color: #ED6262;
+}
+
+div {
+  width: 500px;
+  margin: 0 auto;
+}

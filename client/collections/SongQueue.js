@@ -15,7 +15,7 @@ var SongQueue = Songs.extend({
       //then play next
       if(this.length >= 1) {
         this.playFirst();  
-      }
+      } 
     }, this);
 
 
@@ -26,12 +26,21 @@ var SongQueue = Songs.extend({
       }
     }, this);
 
+    this.on('removeFromQueue', function(ev){
+      if(this.length > 1){
+        if(this.at(0) === ev) {
+          this.trigger('ended');
+        } else {
+          this.remove(ev);
+        }
+      }
+    }, this);
+
   },
 
   playFirst: function(){
     this.at(0).play();
     this.at(0).set('count', (this.at(0).get('count') + 1))
-    debugger;
   },
 
 
